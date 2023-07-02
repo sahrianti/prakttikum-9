@@ -29,6 +29,32 @@ Route::get('/pasien', function () {
 });
 
 
+
+
+
+
+
+route::group(['middleware' => ['auth']], function(){
+    route::get('/admin',
+    [TokoController::class, 'admin']) ->name('produk.admin');
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 use App\Http\Controllers\FormController;
 
 
@@ -117,3 +143,6 @@ Route::prefix('toko')->group(function () {
         [TokoController::class, 'index']
     );
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
